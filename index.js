@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -46,6 +47,7 @@ app.get('*', (req, res) => {
   })
 
 // Setting connection port
-app.listen(4000,()=>{
-    console.log('server started on port 4000')
+const port = process.env.PORT || 4000
+app.listen(port,()=>{
+    console.log(`server started on port ${port}`)
 });
