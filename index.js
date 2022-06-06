@@ -10,7 +10,8 @@ const app = express();
 
 // Importing Routes
 const registrationRoutes = require('./routes/registrationRoutes');
-
+const { PORT } = process.env
+const { WELCOME_MESSAGE, DATABASE_URL } = process.env
 // creating a connection between our Controller and Database
 // mongoose.connect(config.database)
 // const db = mongoose.connection
@@ -46,8 +47,18 @@ app.get('*', (req, res) => {
     res.status(404).send('Hello,This is an invalid URL')
   })
 
+  // / spin up the server 
+mongoose.connect(DATABASE_URL).then(() => {
+    // successful connection
+    app.listen(PORT, ()=> {
+        let message = `${WELCOME_MESSAGE} http://localhost:${PORT}`
+        console.log(message)
+    })
+}).catch(error => {
+    console.error("Failed to start the server due to : ",error)
+})
 // Setting connection port
-const port = process.env.PORT || 4000
-app.listen(port,()=>{
-    console.log(`server started on port ${port}`)
-});
+// const port = process.env.PORT || 4000
+// app.listen(port,()=>{
+//     console.log(`server started on port ${port}`)
+// });
