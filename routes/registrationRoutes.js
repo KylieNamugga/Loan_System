@@ -10,7 +10,7 @@ router.use(expressValidator());
 const Registration = require('../models/registrationmodel')
 
 //The get route
-router.get('/registration', (req, res) => {
+router.get('/', (req, res) => {
     res.render('registration');
 });
 
@@ -57,7 +57,7 @@ router.post('/registration', (req, res) => {
             else {
                 // alert('you have successfully registered')
                 console.log('Kylie, you have successfully registered your First  client');
-                res.redirect('/registration')
+                res.redirect('/')
             }
         })
     }
