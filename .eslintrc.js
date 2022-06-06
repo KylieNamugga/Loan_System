@@ -11,9 +11,9 @@ module.exports = {
       sourceType: 'module',
     },
     
-    rules: {
-      "no-unused-expression": true
+    // rules: {
+    //   "no-unused-expression": true
   
-    },
+    // },
   };
   

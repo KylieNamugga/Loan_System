@@ -5,22 +5,22 @@ const expressValidator = require ('express-validator');
 const app = express();
 
 // Import database configurations
-const config = require('./config/database');
+// const config = require('./config/database');
 
 // Importing Routes
 const registrationRoutes = require('./routes/registrationRoutes');
 
 // creating a connection between our Controller and Database
-mongoose.connect(config.database)
-const db = mongoose.connection
+// mongoose.connect(config.database)
+// const db = mongoose.connection
 // Testing Connection to the data
-db.once('open',()=>{
-    console.log('connected to the Database Successfully');
-});
+// db.once('open',()=>{
+//     console.log('connected to the Database Successfully');
+// });
 
-db.on('error', (err)=>{
-console.error(err);
-});
+// db.on('error', (err)=>{
+// console.error(err);
+// });
 
 // setting the view engine
 app.engine('pug', require('pug').__express);
