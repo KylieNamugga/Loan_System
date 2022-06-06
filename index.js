@@ -43,7 +43,7 @@ app.use('/', registrationRoutes);
 
 // This message that appears in case someone searches for a route that doesnt exist on my server
 app.get('*', (req, res) => {
-    res.status(404).send('This is an invalid URL')
+    res.status(404).send('Hello,This is an invalid URL')
   })
 
 // Setting connection port
