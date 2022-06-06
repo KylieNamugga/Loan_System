@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: 'ENV_FILENAME' });
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -9,6 +9,8 @@ const app = express();
 // const config = require('./config/database');
 
 // Importing Routes
+const uri = process.env.MONGODB_URI;
+
 const registrationRoutes = require('./routes/registrationRoutes');
 const { PORT } = process.env
 const { WELCOME_MESSAGE, DATABASE_URL } = process.env
