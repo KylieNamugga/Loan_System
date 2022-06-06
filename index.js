@@ -1,15 +1,17 @@
-require('dotenv').config({ path: 'ENV_FILENAME' });
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const expressValidator = require ('express-validator');
 const app = express();
 
+// const uri = process.env.MONGODB_URI;
+
+
 // Import database configurations
 // const config = require('./config/database');
 
 // Importing Routes
-const uri = process.env.MONGODB_URI;
 
 const registrationRoutes = require('./routes/registrationRoutes');
 const { PORT } = process.env
@@ -50,7 +52,7 @@ app.get('*', (req, res) => {
   })
 
   // / spin up the server 
-mongoose.connect(DATABASE_URL).then(() => {
+mongoose.connect(DATABASE_URL,{ useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     // successful connection
     app.listen(PORT, ()=> {
         let message = `${WELCOME_MESSAGE} http://localhost:${PORT}`
